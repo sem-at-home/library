@@ -7,9 +7,9 @@ function Book(title, author, pages, read) {
   this.read = read;
   this.info = function() {
     if (this.read) {
-      console.log(`${this.title} by ${this.author}, ${pages} pages, already read.`);
+      return `${this.title} by ${this.author}, ${pages} pages, already read.`;
     } else {
-      console.log(`${this.title} by ${this.author}, ${pages} pages, not read yet.`);
+      return `${this.title} by ${this.author}, ${pages} pages, not read yet.`;
     }
   }
 }
