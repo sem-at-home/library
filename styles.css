@@ -1,0 +1,49 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+table {
+    border: 3px solid red;
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+}
+
+caption {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    letter-spacing: 1px;
+    padding: 20px;
+}
+
+thead th:nth-child(1) {
+    width: 40%;
+  }
+  
+  thead th:nth-child(2) {
+    width: 30%;
+  }
+  
+  thead th:nth-child(3) {
+    width: 15%;
+  }
+  
+  thead th:nth-child(4) {
+    width: 15%;
+  }
+
+  th, td {
+    padding: 20px;
+  }
+
+  th {
+    letter-spacing: 1px;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: #ff33cc;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #e495e4;
+  }
