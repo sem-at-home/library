@@ -28,4 +28,7 @@ function addBookToLibrary(book, library) {
 }
 
 addBookToLibrary(theHobbit, myLibrary);
+addBookToLibrary(theIt, myLibrary);
+addBookToLibrary(theFellowshipOftheRing, myLibrary);
+
 console.log('My Library', { myLibrary });
