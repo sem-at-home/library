@@ -17,6 +17,12 @@ function Book(title, author, pages, read) {
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
 console.log('The Hobbit info', theHobbit.info());
 
+const theIt = new Book('IT', 'Steven King', 666, true);
+console.log('Book info', theIt.info());
+
+const theFellowshipOftheRing = new Book('The Fellowship Of The Ring', 'J.R.R. Tolkien', 1200, false);
+console.log('Book info', theFellowshipOftheRing.info());
+
 function addBookToLibrary(book, library) {
   library.push(book);
 }
