@@ -32,3 +32,15 @@ addBookToLibrary(theIt, myLibrary);
 addBookToLibrary(theFellowshipOftheRing, myLibrary);
 
 console.log('My Library', { myLibrary });
+
+function renderLibraryTableItem(book) {
+  const table = document.getElementById('library');
+  const row = table.insertRow();
+  const bookAttributes = [book.title, book.author, book.pages, book.read];
+  bookAttributes.map(function(value) {
+    const cell = row.insertCell();
+    cell.innerHTML = value
+  })
+};
+
+myLibrary.map(renderLibraryTableItem)
