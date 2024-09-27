@@ -1,49 +1,79 @@
 html {
-    font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 table {
-    border: 3px solid red;
-    border-collapse: collapse;
-    table-layout: fixed;
-    width: 100%;
+  border: 3px solid red;
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
 }
 
 caption {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-style: italic;
-    letter-spacing: 1px;
-    padding: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-style: italic;
+  letter-spacing: 1px;
+  padding: 20px;
 }
 
 thead th:nth-child(1) {
-    width: 40%;
-  }
+  width: 40%;
+}
   
-  thead th:nth-child(2) {
-    width: 30%;
-  }
-  
-  thead th:nth-child(3) {
-    width: 15%;
-  }
-  
-  thead th:nth-child(4) {
-    width: 15%;
-  }
+thead th:nth-child(2) {
+  width: 30%;
+}
 
-  th, td {
-    padding: 10px;
-  }
+thead th:nth-child(3) {
+  width: 15%;
+}
 
-  th {
-    letter-spacing: 1px;
-  }
+thead th:nth-child(4) {
+  width: 15%;
+}
 
-  tbody tr:nth-child(odd) {
-    background-color: #ff33cc;
-  }
-  
-  tbody tr:nth-child(even) {
-    background-color: #e495e4;
-  }
+th, td {
+  padding: 10px;
+}
+
+th {
+  letter-spacing: 1px;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #ff33cc;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #e495e4;
+}
+
+button {
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px 30px;
+}
+
+.grid-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 10px;
+}
+
+.big-input {
+  width: 150px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+::backdrop {
+  background-image: linear-gradient(
+    45deg,
+    magenta,
+    rebeccapurple,
+    dodgerblue,
+    green
+  );
+  opacity: 0.75;
+}

@@ -22,5 +22,42 @@
       </thead>
       <tbody id="library"></tbody>
     </table>
+    <button id="add-book">Add new book</button>
+    <dialog>
+      <form method="dialog">
+        <div class="grid-row">
+          <label for="title">Title</label
+          ><input class="big-input" type="text" id="title" required autofocus />
+        </div>
+        <div class="grid-row">
+          <label for="author">Author</label
+          ><input class="big-input" type="text" id="author" required />
+        </div>
+        <div class="grid-row">
+          <label for="pages">Number of Pages</label
+          ><input class="big-input" type="number" id="pages" required />
+        </div>
+        <div>
+          <p>Already Read?</p>
+          <div class="grid-row">
+            <div>
+              <input type="radio" id="yes" name="read" value="yes" />
+              <label for="yes">Yes</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="no"
+                name="read"
+                value="no"
+                checked="checked"
+              /><label for="no">No</label>
+            </div>
+          </div>
+        </div>
+        <button class="ok" type="button">OK</button
+        ><button class="cancel" formethod="dialog">Cancel</button>
+      </form>
+    </dialog>
   </body>
 </html>

@@ -1,4 +1,8 @@
 const myLibrary = []
+const libraryTable = document.getElementById('library');
+const addBookButton = document.getElementById('add-book');
+const dialog = document.querySelector("dialog");
+const dialogAddButton = document.querySelector("dialog .ok");
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -34,8 +38,7 @@ addBookToLibrary(theFellowshipOftheRing, myLibrary);
 console.log('My Library', { myLibrary });
 
 function renderLibraryTableItem(book) {
-  const table = document.getElementById('library');
-  const row = table.insertRow();
+  const row = libraryTable.insertRow();
   const bookAttributes = [book.title, book.author, book.pages, book.read];
   bookAttributes.map(function(value) {
     const cell = row.insertCell();
@@ -44,3 +47,18 @@ function renderLibraryTableItem(book) {
 };
 
 myLibrary.map(renderLibraryTableItem)
+
+addBookButton.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+dialogAddButton.addEventListener("click", (event) => {
+  console.log('OK clicked')
+  event.preventDefault();
+  const title = document.querySelector("#title").value
+  const author = document.querySelector("#author").value
+  const pages = document.querySelector("#pages").value
+  const read = document.querySelector("#yes").checked
+  renderLibraryTableItem(new Book(title, author, pages, read));
+  dialog.close();
+});
