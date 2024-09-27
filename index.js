@@ -8,17 +8,12 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
-function getLibraryIndex(book) {
-  return myLibrary.findIndex((entry) => book === entry)
-}
-
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
   addBookToLibrary(this)
-  this.libraryIndex = getLibraryIndex(this)
   this.info = function() {
     if (this.read) {
       return `${this.libraryIndex}: ${this.title} by ${this.author}, ${pages} pages, already read.`;
@@ -39,13 +34,24 @@ console.log('Book info', theFellowshipOftheRing.info());
 
 console.log('My Library', { myLibrary });
 
+function renderDeleteButton(row) {
+  const buttonColumn = row.insertCell();
+  const deleteButton = buttonColumn.appendChild(document.createElement("button"));
+  deleteButton.innerHTML = 'Delete Book';
+  row.addEventListener("click", (event) => {
+    const bookIndex = event.currentTarget.rowIndex - 1
+    removeBookFromLibrary(bookIndex)
+  })
+}
+
 function renderLibraryTableItem(book) {
   const row = libraryTable.insertRow();
   const bookAttributes = [book.title, book.author, book.pages, book.read];
   bookAttributes.map(function(value) {
     const cell = row.insertCell();
-    cell.innerHTML = value
+    cell.innerHTML = value;
   })
+  renderDeleteButton(row);
 };
 
 function renderLibraryTable() {
@@ -70,5 +76,10 @@ dialogAddButton.addEventListener("click", (event) => {
   renderLibraryTable()
   dialog.close();
 });
+
+function removeBookFromLibrary (bookIndex) {
+  myLibrary.splice(bookIndex, 1)
+  renderLibraryTable();
+}
 
 renderLibraryTable();
