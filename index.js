@@ -34,23 +34,40 @@ console.log('Book info', theFellowshipOftheRing.info());
 
 console.log('My Library', { myLibrary });
 
+function renderReadToggle(row, read) {
+  const readColumn = row.insertCell();
+  const readLabel = readColumn.appendChild(document.createElement("label"))
+  readLabel.setAttribute("class", "switch")
+  const readInput = readLabel.appendChild(document.createElement("input"))
+  readInput.checked = read
+  readInput.setAttribute("type", "checkbox")
+  const readSpan = readLabel.appendChild(document.createElement("span"))
+  readSpan.setAttribute("class", "slider")
+}
+
+function deleteBookRow(event) {
+  if (event.target.classList.contains('delete-book')) {
+    const bookIndex = event.currentTarget.rowIndex - 1
+    removeBookFromLibrary(bookIndex)
+  }
+}
+
 function renderDeleteButton(row) {
   const buttonColumn = row.insertCell();
   const deleteButton = buttonColumn.appendChild(document.createElement("button"));
+  deleteButton.setAttribute("class", "delete-book")
   deleteButton.innerHTML = 'Delete Book';
-  row.addEventListener("click", (event) => {
-    const bookIndex = event.currentTarget.rowIndex - 1
-    removeBookFromLibrary(bookIndex)
-  })
+  row.addEventListener("click", deleteBookRow)
 }
 
 function renderLibraryTableItem(book) {
   const row = libraryTable.insertRow();
-  const bookAttributes = [book.title, book.author, book.pages, book.read];
+  const bookAttributes = [book.title, book.author, book.pages];
   bookAttributes.map(function(value) {
     const cell = row.insertCell();
     cell.innerHTML = value;
   })
+  renderReadToggle(row, book.read);
   renderDeleteButton(row);
 };
 
