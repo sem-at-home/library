@@ -4,16 +4,26 @@ const addBookButton = document.getElementById('add-book');
 const dialog = document.querySelector("dialog");
 const dialogAddButton = document.querySelector("dialog .ok");
 
+function addBookToLibrary(book) {
+  myLibrary.push(book);
+}
+
+function getLibraryIndex(book) {
+  return myLibrary.findIndex((entry) => book === entry)
+}
+
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
+  addBookToLibrary(this)
+  this.libraryIndex = getLibraryIndex(this)
   this.info = function() {
     if (this.read) {
-      return `${this.title} by ${this.author}, ${pages} pages, already read.`;
+      return `${this.libraryIndex}: ${this.title} by ${this.author}, ${pages} pages, already read.`;
     } else {
-      return `${this.title} by ${this.author}, ${pages} pages, not read yet.`;
+      return `${this.libraryIndex}: ${this.title} by ${this.author}, ${pages} pages, not read yet.`;
     }
   };
 }
@@ -27,14 +37,6 @@ console.log('Book info', theIt.info());
 const theFellowshipOftheRing = new Book('The Fellowship Of The Ring', 'J.R.R. Tolkien', 1200, false);
 console.log('Book info', theFellowshipOftheRing.info());
 
-function addBookToLibrary(book, library) {
-  library.push(book);
-}
-
-addBookToLibrary(theHobbit, myLibrary);
-addBookToLibrary(theIt, myLibrary);
-addBookToLibrary(theFellowshipOftheRing, myLibrary);
-
 console.log('My Library', { myLibrary });
 
 function renderLibraryTableItem(book) {
@@ -46,7 +48,12 @@ function renderLibraryTableItem(book) {
   })
 };
 
-myLibrary.map(renderLibraryTableItem)
+function renderLibraryTable() {
+  while (libraryTable.firstChild) {
+    libraryTable.removeChild(libraryTable.lastChild);
+  }
+  myLibrary.map(renderLibraryTableItem)
+}
 
 addBookButton.addEventListener("click", () => {
   dialog.showModal();
@@ -59,6 +66,9 @@ dialogAddButton.addEventListener("click", (event) => {
   const author = document.querySelector("#author").value
   const pages = document.querySelector("#pages").value
   const read = document.querySelector("#yes").checked
-  renderLibraryTableItem(new Book(title, author, pages, read));
+  new Book(title, author, pages, read)
+  renderLibraryTable()
   dialog.close();
 });
+
+renderLibraryTable();
